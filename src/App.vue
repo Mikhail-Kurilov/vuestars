@@ -1,22 +1,22 @@
 <script lang="ts">
 import { defineComponent } from "vue";
-import SlavaStar from "./components/SlavaStar.vue";
-import StarRating from "./components/StarRating2.vue";
+import MainStar from "./components/MainStar.vue";
+//import StarRating from "./components/StarRating2.vue";
 
 export default defineComponent({
   components: {
-    StarRating,
-    SlavaStar
+    // StarRating,
+    MainStar
   },
 });
 </script>
 
 <template>
   <div>
-    <StarRating :rating="3" />
+    <!--<StarRating :rating="3" />-->
   </div>
   <div>
-    <SlavaStar />
+    <MainStar />
   </div>
 </template>
 
