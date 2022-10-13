@@ -12,6 +12,7 @@ export default {
     const starSize = ref(`${53}px`)
     const fontSize = ref(`${40}px`)
     const fontWeight = ref(500)
+    const checked = ref(true)
 
     const starArr = computed(() => {
       const resultArr = []
@@ -33,6 +34,7 @@ export default {
       starSize,
       fontSize,
       fontWeight,
+      checked,
       starArr,
       hoverStar,
       currentStar,
@@ -67,16 +69,24 @@ export default {
         <input v-model="starSize" type="text">
       </div>
     </div>
-    <div class="options">
-      <span>Costomize text</span>
-      <input v-model="fontSize" type="text">
-      <input v-model="fontWeight" type="text">
+    <div class="innerContainer">
+      <div class="options">
+        <span>Costomize text</span>
+        <input v-model="fontSize" type="text">
+        <input v-model="fontWeight" type="text">
+      </div>
+      <div class="options">
+        <input type="checkbox" id="checkbox" v-model="checked" />
+        <label for="checkbox">{{ checked }}</label>
+      </div>
     </div>
+
   </div>
   <div class="wrap">
     <StarImg :fill='hoverStar >= star || currentStar >= star ? starColorFilled : starColorOutlined'
-      v-for="star in starArr" :key="star" class="star" :style="{ 'height': starSize }" @mouseover="hoverStar = star"
-      @mouseleave="hoverStar = currentStar ? currentStar : 0" @click="setStar(star)" />
+      v-for="star in starArr" :key="star" class="star" :style="{ 'height': starSize }"
+      @mouseover="checked ? '' : hoverStar = star" @mouseleave="hoverStar = currentStar ? currentStar : 0"
+      @click="!checked && setStar(star)" />
   </div>
 </template>
 
